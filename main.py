@@ -2,14 +2,21 @@ import requests
 import json
 import time
 import os
+import datetime
 from dotenv import load_dotenv
-
 
 load_dotenv()
 CLIENT_ID = os.getenv("CLIENT_ID")
 CLIENT_SECRET = os.getenv("CLIENT_SECRET")
 CODE_URL = "https://allegro.pl/auth/oauth/device"
 TOKEN_URL = "https://allegro.pl/auth/oauth/token"
+DATA = {}
+
+if os.path.exists("expiring.txt"):
+    with open("expiring.txt") as f:
+        for line in f:
+            key, value = line.strip().split('>>>')
+            DATA[key] = value
 
 
 def get_code():
@@ -45,6 +52,11 @@ def await_for_access_token(interval, device_code):
             if token['error'] == 'access_denied':
                 break
         else:
+            now = datetime.datetime.now()
+            expire_time = now + datetime.timedelta(hours=10)
+            with open("expiring.txt", "w") as f:
+                f.write(f"EXPIRE_TIME>>>{expire_time.strftime('%Y-%m-%d %H:%M:%S')}\nACCESS_TOKEN>>>{token['access_token']}")
+
             return token['access_token']
 
 
@@ -61,10 +73,21 @@ def get_orders(token):
 def main():
     code = get_code()
     result = json.loads(code.text)
-    print(result)
-    print("User, open this address in the browser:" + result['verification_uri_complete'])
-    access_token = await_for_access_token(int(result['interval']), result['device_code'])
-    # print("access_token = " + access_token)
+
+    if len(DATA) != 0:
+        now = datetime.datetime.now()
+        expire_time = datetime.datetime.strptime(DATA['EXPIRE_TIME'], '%Y-%m-%d %H:%M:%S')
+
+        if now > expire_time:
+            print("User, open this address in the browser:" + result['verification_uri_complete'])
+            access_token = await_for_access_token(int(result['interval']), result['device_code'])
+        else:
+            access_token = DATA['ACCESS_TOKEN']
+
+    else:
+        print("User, open this address in the browser:" + result['verification_uri_complete'])
+        access_token = await_for_access_token(int(result['interval']), result['device_code'])
+
     orders = get_orders(access_token)
     print(json.dumps(orders.json(), indent=4))
 
