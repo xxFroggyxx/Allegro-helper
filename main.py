@@ -137,9 +137,9 @@ def get_orders_with_date_border(token: str, date: str, sort: str = "Descending")
                     if sort in ["Alphabetical", "alphabetical", "alph"]:
                         return OrderedDict(sorted(count_products.items(), key=lambda item: item[0]))
                     elif sort in ["Ascending", "ascending", "asc"]:
-                        return OrderedDict(sorted(count_products.items(), key=lambda item: item[1]))
+                        return OrderedDict(sorted(count_products.items(), key=lambda item: (item[1], item[0])))
                     elif sort in ["Descending", "descending", "desc"]:
-                        return OrderedDict(sorted(count_products.items(), key=lambda item: item[1], reverse=True))
+                        return OrderedDict(sorted(count_products.items(), key=lambda item: (item[1], item[0]), reverse=True))
                     else:
                         print("Popraw opcje sortu! Dostępne: alphabetical, ascending, descending")
                         return
