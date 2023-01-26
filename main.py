@@ -159,20 +159,21 @@ def get_orders_with_date_border(token: str, date: str, sort: str = "Descending")
 
 
 def main():
-    code = get_code()
-    dev = json.loads(code.text)
-
     if len(DATA) != 0:
         now = datetime.datetime.now()
         expire_time = datetime.datetime.strptime(DATA['EXPIRE_TIME'], '%Y-%m-%d %H:%M:%S')
 
         if now > expire_time:
+            code = get_code()
+            dev = json.loads(code.text)
             print("User, open this address in the browser:" + dev['verification_uri_complete'])
             access_token = await_for_access_token(int(dev['interval']), dev['device_code'])
         else:
             access_token = DATA['ACCESS_TOKEN']
 
     else:
+        code = get_code()
+        dev = json.loads(code.text)
         print("User, open this address in the browser:" + dev['verification_uri_complete'])
         access_token = await_for_access_token(int(dev['interval']), dev['device_code'])
 
