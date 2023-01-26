@@ -122,7 +122,7 @@ def get_orders_with_date_border(token: str, date: str, sort: str = "Descending")
           Descending: Descending, descending, desc
     """
     givenDate = datetime.datetime.strptime(date, "%Y-%m-%d")
-    print(f"Wszystkie przedmioty sprzedane do {givenDate.date()} włącznie:\n")
+    print(f"Wszystkie przedmioty sprzedane do {givenDate.date()} włącznie:")
     n = 0
     count_products = {}
     while True:
@@ -180,9 +180,9 @@ def main():
     result = get_orders_with_date_border(access_token, "2023-01-25")
     suma = 0
     for key, value in result.items():
-        print(f"{key} x{value}")
+        print(f"\t{key} x{value}")
         suma += value
-    print("Suma sprzedanych przedmiotow", suma)
+    print("\nSuma sprzedanych przedmiotow", suma)
     print("Ilosc unikalnych przedmiotow", len(result.items()))
 
 
