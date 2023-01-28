@@ -121,8 +121,8 @@ def get_orders_with_date_border(token: str, date: str, sort: str = "Descending")
           Ascending: Ascending, ascending, asc
           Descending: Descending, descending, desc
     """
-    givenDate = datetime.datetime.strptime(date, "%Y-%m-%d")
-    print(f"Wszystkie przedmioty sprzedane do {givenDate.date()} włącznie:")
+    given_date = datetime.datetime.strptime(date, "%Y-%m-%d")
+    print(f"Wszystkie przedmioty sprzedane do {given_date.date()} włącznie:")
     n = 0
     count_products = {}
     while True:
@@ -132,9 +132,9 @@ def get_orders_with_date_border(token: str, date: str, sort: str = "Descending")
             orders_date_result = requests.get(url, headers=headers, verify=True).json()
 
             for ind in range(len(orders_date_result["checkoutForms"])):
-                productBoughtDate = datetime.datetime.strptime(orders_date_result["checkoutForms"][ind]["lineItems"][0]["boughtAt"][0:10], "%Y-%m-%d")
+                product_bought_date = datetime.datetime.strptime(orders_date_result["checkoutForms"][ind]["lineItems"][0]["boughtAt"][0:10], "%Y-%m-%d")
 
-                if givenDate > productBoughtDate:
+                if given_date > product_bought_date:
                     if sort in ["Alphabetical", "alphabetical", "alph"]:
                         return OrderedDict(sorted(count_products.items(), key=lambda item: item[0]))
                     elif sort in ["Ascending", "ascending", "asc"]:
