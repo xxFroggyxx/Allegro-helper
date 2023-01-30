@@ -11,7 +11,7 @@ def read(fname):
 
 setup(
     name="Allegro Sale Helper",
-    version="0.0.1",
+    version="1.0.0",
     author="Wojciech Klimczewski",
     description="Helps with sales management on Allegro",
     long_description=read("README.md"),

@@ -40,7 +40,7 @@ class App(customtkinter.CTk):
         self.functional_label = customtkinter.CTkLabel(master=self.functional_layout, text="Wybierz co chcesz zrobić", font=("Calibri", 32))
         self.functional_label.place(relx=.5, rely=.3, anchor=tkinter.N)
         self.optionButton = customtkinter.CTkButton(master=self.functional_layout, text="1. Pobierz liste produktów", height=32,
-                                                    command=threading.Thread(target=self.download_orders_with_date_border).start)
+                                                    command=self.download_orders_with_date_border)
         self.optionButton.place(relx=.5, rely=.6, anchor=tkinter.N)
 
         if len(DATA) != 0:
