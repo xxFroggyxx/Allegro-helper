@@ -1,4 +1,36 @@
 <h1 align="center">Allegro helper - Python</h1>
+<h2 align="center">PL</h2>
+## Table of Contents
+
+- [Opis](#Opis)
+  - [Demo](#demo)
+- [Kontakt](#kontakt) 
+
+
+## Opis
+
+Jest to projekt w którym chciałem pomóc tacie, przy prowadzeniu sklepu internetowego. <p>Ta aplikacja aktualnie ma 1 opcję, ale jest dla nas bardzo ważna, ponieważ będziemy mogli zoptymalizować i sprawdzać, co i w jakiej ilości zostało sprzedane, ułatwi nam to bardzo życię, zwłaszcza gdy trzeba będzie uzupełnić półki/zatowarować się.</p>
+
+## Demo
+### Etapy
+1. Autoryzacja użytkownika
+   - Automatycznie otwiera przeglądarkę i przekierowuje na stronę do autoryzacji. Wszystko co trzeba robić to klikać przycisk dalej/akceptuj.</br>
+   - </br>![User authorization](static/1.PNG)
+   -  Kiedy wejdziesz na strone automatycznie wygenerowany kod będzie wpisany.</br> ![Authorization step 1](static/2.PNG)
+   - </br>![Authorization step 2](static/3.PNG)
+   - </br>![Authorization step 3](static/4.PNG)
+
+2. Jeśli wszystko pójdzie dobrze, to zobaczysz część odpowiedzialną za funkcjonowanie aplikacji.
+   - Przez najbliższe 12 godzin użytkownik, nie będzie musiał się autoryzować ponieważ klucz jest aktywny przez 12 godzin i jest on zapisywany do pliku, aby nie tworzyć niepotrzebnych requestów.
+   - Teraz zobaczysz menu.</br>![Menu](static/5.PNG)
+   - </br>![Option 1 step 1](static/6.PNG)
+   - Przykładowy wynik opcji 1</br>![Option 1 results](static/7.PNG)
+
+## Kontakt
+
+- GitHub [@xxFroggyxx](https://github.com/xxFroggyxx/)
+
+<h2 align="center">ENG</h2>
 
 ## Table of Contents
 
@@ -6,7 +38,6 @@
   - [Demo](#demo)
 - [Contact](#contact) 
 
-<!-- OVERVIEW -->
 
 ## Overview
 
