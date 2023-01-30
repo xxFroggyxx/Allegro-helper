@@ -17,11 +17,12 @@ This is my Python project that I wanted to help my dad with our ecommerce shop. 
 1. User authorization
     - Automatically opens browser and redirects to authorization website. All u need to do is clicking continue/accept buttons.</br>
    - </br>![User authorization](static/1.PNG)
-   - After entering, you have already entered the authorization code.</br> ![Authorization step 1](static/2.PNG)
+   - After entering, you have already entered the automatically generated authorization code.</br> ![Authorization step 1](static/2.PNG)
    - </br>![Authorization step 2](static/3.PNG)
    - </br>![Authorization step 3](static/4.PNG)
 
 2. If everything goes right, u will see Functional part
+   - And now for the next 12 hours you will not have to authorize yourself because the key is active(12 hours) and saved to a file.
    - Now u see menu and options.</br>![Menu](static/5.PNG)
    - </br>![Option 1 step 1](static/6.PNG)
    - Example result of option 1</br>![Option 1 results](static/7.PNG)
