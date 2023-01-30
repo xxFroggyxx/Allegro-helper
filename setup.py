@@ -14,7 +14,7 @@ setup(
     version="1.0.0",
     author="Wojciech Klimczewski",
     description="Helps with sales management on Allegro",
-    long_description=read("README.md"),
+    long_description=read("../docs/en/README.md"),
     packages=find_packages(),
     install_requires=REQUIRES,
 )
